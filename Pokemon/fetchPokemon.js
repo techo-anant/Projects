@@ -27,6 +27,10 @@ async function fetchdata() {
             const data = await response.json();
             console.log(data);
             const pokemonSprite = data.sprites.front_default;
+            const pokeInfo = document.querySelector(".info");
+            const info = data.types;
+
+            pokeInfo.innerHTML = `<h3>Type: ${info.map(ele => ele.type.name.charAt(0).toUpperCase()+ele.type.name.substring(1,)).join(", ")} </h3>`;
 
             imgElement.src = pokemonSprite;
             imgElement.style.display = "block";
